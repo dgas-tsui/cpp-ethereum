@@ -348,7 +348,7 @@ protected:
     Handler<h256 const&> m_tqReplaced;
     Handler<> m_bqReady;
 
-    bool m_wouldSeal = false;               ///< True if we /should/ be sealing.
+    std::atomic<bool> m_wouldSeal = { false };               ///< True if we /should/ be sealing.
     bool m_wouldButShouldnot = false;       ///< True if the last time we called rejigSealing wouldSeal() was true but sealer's shouldSeal() was false.
 
     mutable std::chrono::system_clock::time_point m_lastGarbageCollection;
